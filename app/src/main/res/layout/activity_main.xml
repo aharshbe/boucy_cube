@@ -23,7 +23,7 @@
         android:id="@+id/instr"
         android:layout_width="270sp"
         android:layout_height="30sp"
-        android:text=" Click start to begin."
+        android:text=" Tap start to begin."
         android:fontFamily="monospace"
         android:textColor="#ffff00"
         android:textSize="20sp"
