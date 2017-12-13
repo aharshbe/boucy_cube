@@ -1,4 +1,4 @@
-package com.example.ahars.tappingtest;
+package x.aharshbe.ahars.tappingtest;
 
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -12,10 +12,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.util.Timer;
-
-import static java.lang.Boolean.FALSE;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog.Builder builder2 = new AlertDialog.Builder(MainActivity.this);
         builder2.setMessage("How long would you like to play for?");
+        builder2.setCancelable(false);
         builder2.setNeutralButton(
                 "60 seconds",
                 new DialogInterface.OnClickListener() {
@@ -147,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 AlertDialog.Builder builder2 = new AlertDialog.Builder(MainActivity.this);
                                 builder2.setMessage("How long would you like to play for?");
+                                builder2.setCancelable(false);
                                 builder2.setNeutralButton(
                                         "60 seconds",
                                         new DialogInterface.OnClickListener() {

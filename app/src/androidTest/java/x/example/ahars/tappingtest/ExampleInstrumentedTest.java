@@ -1,4 +1,4 @@
-package com.example.ahars.tappingtest;
+package x.example.ahars.tappingtest;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

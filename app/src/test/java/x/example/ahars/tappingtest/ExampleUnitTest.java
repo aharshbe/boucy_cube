@@ -1,4 +1,4 @@
-package com.example.ahars.tappingtest;
+package x.example.ahars.tappingtest;
 
 import org.junit.Test;
 

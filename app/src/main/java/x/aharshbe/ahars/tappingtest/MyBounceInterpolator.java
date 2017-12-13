@@ -1,4 +1,4 @@
-package com.example.ahars.tappingtest;
+package x.aharshbe.ahars.tappingtest;
 
 /**
  * Created by ahars on 12/12/2017.
