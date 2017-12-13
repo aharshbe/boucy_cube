@@ -19,9 +19,9 @@ import static java.lang.Boolean.FALSE;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView textView, timer;
+    TextView textView, timer, instr;
     Button face, start;
-    int counter;
+    int counter, timer_time;
     Animation myAnim;
 
     @Override
@@ -34,8 +34,44 @@ public class MainActivity extends AppCompatActivity {
         timer = findViewById(R.id.timer);
         face = findViewById(R.id.face);
         start = findViewById(R.id.start);
+        instr = findViewById(R.id.instr);
         myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
         face.setBackgroundColor(Color.YELLOW);
+
+
+        AlertDialog.Builder builder2 = new AlertDialog.Builder(MainActivity.this);
+        builder2.setMessage("How long would you like to play for?");
+        builder2.setNeutralButton(
+                "60 seconds",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        timer_time = 60000;
+
+                    }
+                });
+        builder2.setNegativeButton(
+                "30 seconds",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        timer_time = 30000;
+
+                    }
+                });
+
+        builder2.setPositiveButton(
+                "10 seconds",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        timer_time = 10000;
+
+                    }
+                });
+
+        AlertDialog alert112 = builder2.create();
+        alert112.show();
 
     }
 
@@ -71,15 +107,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickingStart(View view) {
 
-        String click_start = "Start Game";
-        if (click_start.equals(start.getText())){
-
-            start.setText(" Click as fast you can! ");
-        }
-
+        start.setText(" Click as fast you can! ");
         face.setVisibility(View.VISIBLE);
+        instr.setVisibility(View.INVISIBLE);
+        start.setClickable(false);
 
-        new CountDownTimer(10000, 1000) {
+        new CountDownTimer(timer_time, 1000) {
             @Override
             public void onTick(long l) {
 
@@ -91,9 +124,11 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish() {
 
                 timer.setText("Time is up.");
+                textView.setText("");
 
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
                 builder1.setMessage("Your score was: " + counter);
+                builder1.setCancelable(false);
                 builder1.setNegativeButton(
                         "Reset",
                         new DialogInterface.OnClickListener() {
@@ -106,6 +141,43 @@ public class MainActivity extends AppCompatActivity {
                                 dialog.cancel();
                                 start.setText("Start Game");
                                 face.setVisibility(View.INVISIBLE);
+                                instr.setVisibility(View.VISIBLE);
+                                start.setClickable(true);
+
+
+                                AlertDialog.Builder builder2 = new AlertDialog.Builder(MainActivity.this);
+                                builder2.setMessage("How long would you like to play for?");
+                                builder2.setNeutralButton(
+                                        "60 seconds",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+
+                                                timer_time = 60000;
+
+                                            }
+                                        });
+                                builder2.setNegativeButton(
+                                        "30 seconds",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+
+                                                timer_time = 30000;
+
+                                            }
+                                        });
+
+                                builder2.setPositiveButton(
+                                        "10 seconds",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+
+                                                timer_time = 10000;
+
+                                            }
+                                        });
+
+                                AlertDialog alert112 = builder2.create();
+                                alert112.show();
                             }
                         });
 
